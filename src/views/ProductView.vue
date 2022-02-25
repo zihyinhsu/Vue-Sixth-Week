@@ -23,7 +23,7 @@
                            min="1">
                     <button type="button" class="btn btn-primary" @click="addToCart(product.id,qty)"
                     :disabled="isLoadingItem === product.id">
-                    <i class="fas fa-spinner fa-pulse" v-show="isLoadingItem === product.id"></i>
+                    <span v-show="isLoadingItem === product.id"><i class="fas fa-spinner fa-pulse"></i></span>
                     加入購物車</button>
                    </div>
                   </div>

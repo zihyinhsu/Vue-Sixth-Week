@@ -12,7 +12,7 @@
                 <router-link :to="`/product/${product.id}`" class="btn btn-outline-primary w-100 me-2">查看詳情</router-link>
                 <div class="btn btn-primary w-100" @click="addToCart(product.id)"
                     :disabled="isLoadingItem === product.id">
-                    <i class="fas fa-spinner fa-pulse" v-show="isLoadingItem === product.id"></i>
+                    <span v-show="isLoadingItem === product.id"><i class="fas fa-spinner fa-pulse"></i></span>
                     加入購物車</div>
               </div>
             </div>
