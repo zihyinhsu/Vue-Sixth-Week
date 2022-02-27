@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
@@ -7,13 +6,10 @@ const routes = [
     component: () => import('../views/FrontView.vue'),
     children: [
       {
-        path: '',
-        name: 'home',
-        component: HomeView
-      },
-      {
         path: 'products',
-        component: () => import('../views/ProductsView.vue')
+        name: '產品列表',
+        component: () => import('../views/ProductsView.vue'),
+        meta: { title: '產品列表' }
       },
       {
         path: 'product/:id',
@@ -34,8 +30,10 @@ const routes = [
     component: () => import('../views/DashboardView.vue'),
     children: [
       {
-        path: 'products',
-        component: () => import('../views/AdminProducts.vue')
+        path: '',
+        name: '後台產品列表',
+        component: () => import('../views/AdminProducts.vue'),
+        meta: { title: '後台產品列表' }
       },
       {
         path: 'coupon',
@@ -49,6 +47,11 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
   linkActiveClass: 'active'
+})
+
+router.beforeEach((to, from, next) => {
+  window.document.title = to.meta.title
+  next()
 })
 
 export default router
